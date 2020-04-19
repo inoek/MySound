@@ -1,0 +1,6 @@
+framework module Pods_MySound {
+  umbrella header "Pods-MySound-umbrella.h"
+
+  export *
+  module * { export * }
+}
