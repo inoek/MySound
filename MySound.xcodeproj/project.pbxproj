@@ -10,6 +10,7 @@
 		95C32B6B7F8C55DA970ED136 /* Pods_MySound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FAC13EF723A3BF041989BF /* Pods_MySound.framework */; };
 		E5827D30244F7B170069831F /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5827D2F244F7B170069831F /* TrackCell.xib */; };
 		E5827D32244F7B550069831F /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827D31244F7B550069831F /* TrackCell.swift */; };
+		E5B4852524507F9D009CDB34 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4852424507F9D009CDB34 /* FooterView.swift */; };
 		E5E2534B244CA88000FC8C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2534A244CA88000FC8C8F /* AppDelegate.swift */; };
 		E5E2534D244CA88000FC8C8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2534C244CA88000FC8C8F /* SceneDelegate.swift */; };
 		E5E2534F244CA88000FC8C8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2534E244CA88000FC8C8F /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 		CDD696DFCB6D77448D41D8C8 /* Pods-MySound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySound.release.xcconfig"; path = "Target Support Files/Pods-MySound/Pods-MySound.release.xcconfig"; sourceTree = "<group>"; };
 		E5827D2F244F7B170069831F /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		E5827D31244F7B550069831F /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		E5B4852424507F9D009CDB34 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E5E25347244CA88000FC8C8F /* MySound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E2534A244CA88000FC8C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E2534C244CA88000FC8C8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E5B4852324507F81009CDB34 /* Footer View */ = {
+			isa = PBXGroup;
+			children = (
+				E5B4852424507F9D009CDB34 /* FooterView.swift */,
+			);
+			path = "Footer View";
+			sourceTree = "<group>";
+		};
 		E5E2533E244CA88000FC8C8F = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		E5E2535E244CA91200FC8C8F /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				E5B4852324507F81009CDB34 /* Footer View */,
 				E5827D2E244F7AEF0069831F /* Cell */,
 				E5E2536B244CA96900FC8C8F /* SearchViewController.storyboard */,
 				E5E25363244CA92200FC8C8F /* SearchViewController.swift */,
@@ -295,6 +306,7 @@
 				E5E25370244CAA2600FC8C8F /* SearchMusicViewController.swift in Sources */,
 				E5E2537A244CAAB100FC8C8F /* UiViewController + Delegate.swift in Sources */,
 				E5E25378244CAAA000FC8C8F /* SearchRespondModel.swift in Sources */,
+				E5B4852524507F9D009CDB34 /* FooterView.swift in Sources */,
 				E5827D32244F7B550069831F /* TrackCell.swift in Sources */,
 				E5E2536E244CA9FA00FC8C8F /* MainTabBarController.swift in Sources */,
 				E5E25369244CA92200FC8C8F /* SearchViewController.swift in Sources */,

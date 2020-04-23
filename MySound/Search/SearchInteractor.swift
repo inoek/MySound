@@ -33,11 +33,14 @@ class SearchInteractor: SearchBusinessLogic
         
         switch request {
         case .getTracks(let searchTerm):
+            presenter?.presentData(response: Search.Model.Response.ResponseType.presentFooterView)
             //вызывается функция модели networkService, получающая значение из поиска
             //полученные данные идут в presenter
             networkService.fetchTracks(searchText: searchTerm) { [weak self] (searchResponse) in
                 //отпраляем данные из searchBar в presenter
                 self?.presenter?.presentData(response: Search.Model.Response.ResponseType.presentTracks(searchResponse: searchResponse))
+                //отправляем FooterView to presenter
+                
             }
             
         }

@@ -31,6 +31,7 @@ enum Search
     {
         enum ResponseType {
             case presentTracks(searchResponse: RespondModel?)
+            case presentFooterView
         }
     }
     
@@ -39,6 +40,7 @@ enum Search
     {
         enum ViewModelData {
             case displayTracks(searchViewModel: SearchViewModel)
+            case displayFooterView
         }
         
     }

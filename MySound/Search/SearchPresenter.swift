@@ -22,33 +22,35 @@ protocol SearchPresentationLogic
 class SearchPresenter: SearchPresentationLogic
 {
     weak var viewController: SearchDisplayLogic?//updated
-
+    
     func presentData(response: Search.Model.Response.ResponseType) {
-
+        
         switch response {
-
+            
         case .presentTracks(let searchResults):
             //конвертируем полученные треки в формат и отправляем данные в ViewController
             let cells = searchResults?.results.map({ (track) in
                 //возвращаем в searchResults объект track, содержащий элементы модели TrackModel
                 cellViewModel(from: track)
             }) ?? [] //обрабатываем ошибку - возвращаем пустой массив
-
+            
             let searchViewModel = SearchViewModel.init(cells: cells)
             viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayTracks(searchViewModel: searchViewModel))
-
+        //отправляем во viewController footerView
+        case .presentFooterView:
+            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayFooterView)
         }
-
-
-
-
-
+        
+        
+        
+        
+        
     }
     private func cellViewModel(from track: TrackModel) -> SearchViewModel.Cell {
-
+        
         return SearchViewModel.Cell.init(iconUrlString: track.artworkUrl100, trackName: track.trackName,
                                          artistName: track.artistName, collectionString: track.collectionName!,
                                          previewUrl: track.previewUrl)
     }
-
+    
 }
