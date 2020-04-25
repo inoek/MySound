@@ -61,6 +61,8 @@ class SearchViewController: UIViewController, SearchDisplayLogic
         setup()
         setupTableView()
         setupSearchBar()
+        //заполнение searchBar
+        searchBar(searchController.searchBar, textDidChange: "travis scott")
     }
     
     private func setupSearchBar() {
@@ -120,10 +122,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cellViewModel = searchViewModel.cells[indexPath.row]
-        print(cellViewModel.trackName)
+        
         
         let trackDetailView = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
         let window = UIApplication.shared.keyWindow//главное окно приложения
+        trackDetailView.set(viewModel: cellViewModel)
         window?.addSubview(trackDetailView)
     }
     

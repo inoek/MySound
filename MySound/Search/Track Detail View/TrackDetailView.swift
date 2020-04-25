@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import SDWebImage
+import AVKit
 
 class TrackDetailView: UIView {
     
@@ -22,14 +23,90 @@ class TrackDetailView: UIView {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeSlider: UISlider!
     
+    let player: AVPlayer = {
+        let avPlayer = AVPlayer()
+        avPlayer.automaticallyWaitsToMinimizeStalling = false//задержка загрузки плеера
+        return avPlayer
+    }()
+    
+    
+    
+    // MARK: - Awake Frome Nib
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        trackImageView.backgroundColor = .red
-
+        let scale: CGFloat = 0.8
+        trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        trackImageView.layer.cornerRadius = 5//закругляем картинку
     }
     
-
+    
+    
+    
+    
+    // MARK: - Setup
+    
+    private func playTrack(previewUrl: String?) {
+        guard let url = URL(string: previewUrl ?? "") else { return }//извлекаем url песни
+        let playerItem = AVPlayerItem(url: url)//создаём объект с этой песней
+        player.replaceCurrentItem(with: playerItem)//кладём в плеер объект с песней
+        player.play()
+    }
+    
+    
+    func set(viewModel: SearchViewModel.Cell) {
+        
+        trackTitleLabel.text = viewModel.trackName
+        artistLabel.text = viewModel.artistName
+        playTrack(previewUrl: viewModel.previewUrl)
+        monitorStartTime()
+        
+        let resizeOfImage = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
+        guard let url = URL(string: resizeOfImage ?? "") else { return }
+        trackImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    // MARK: - Time Setup
+    
+    
+    private func monitorStartTime() {
+        //отслеживаем начало воспроизведения музыки
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in//утечка памяти при запуске нескольких треков
+            
+            self?.enlargeTrackImageView()
+            
+        }
+        
+    }
+    
+    
+    // MARK: - Animations
+    
+    private func enlargeTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            
+            self.trackImageView.transform = .identity
+            
+        }, completion: nil)
+    }
+    
+    
+    private func reduceTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            
+            let scale: CGFloat = 0.8
+            self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+            
+        }, completion: nil)
+        
+    }
+    
+    // MARK: - IBActions
+    
     
     @IBAction func dragDownButtonTapped(_ sender: UIButton) {
         
@@ -51,6 +128,17 @@ class TrackDetailView: UIView {
     
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
+        
+        if player.timeControlStatus == .paused {//воспроизводим
+            player.play()
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            enlargeTrackImageView()
+        } else {//ставим на паузу
+            player.pause()
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            reduceTrackImageView()
+        }
+        
     }
     
     
