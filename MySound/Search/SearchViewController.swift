@@ -127,6 +127,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let trackDetailView = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
         let window = UIApplication.shared.keyWindow//главное окно приложения
         trackDetailView.set(viewModel: cellViewModel)
+        
+        trackDetailView.delegate = self//объявляем делегата (SearchViewController отвечает за реализацию функций)
+        
         window?.addSubview(trackDetailView)
     }
     
@@ -167,4 +170,42 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-
+extension SearchViewController: TrackMovingDelegate {
+    
+    
+    private func getTrack(isForwardTrack: Bool) -> SearchViewModel.Cell? {
+        
+        guard let indexPath = table.indexPathForSelectedRow else { return nil }
+        table.deselectRow(at: indexPath, animated: true)//снимаем выделение ячейки
+        var nextIndexPath: IndexPath
+        
+        if isForwardTrack {
+            nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+            //если выходим за пределы списка
+            if nextIndexPath.row == searchViewModel.cells.count {
+                nextIndexPath.row = 0
+            }
+        } else {
+            nextIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+            //если выходим за пределы списка
+            if nextIndexPath.row == -1 {
+                nextIndexPath.row = searchViewModel.cells.count - 1
+            }
+        }
+        
+        //выделяем новую ячейку
+        table.selectRow(at: nextIndexPath, animated: true, scrollPosition: .none)
+        let cellViewModell = searchViewModel.cells[nextIndexPath.row]
+        return cellViewModell
+    }
+    
+    func moveBackForPreviousTrack() -> SearchViewModel.Cell? {
+        return getTrack(isForwardTrack: false)//false - трек предыдущий
+    }
+    
+    func moveForwardForPreviousTrack() -> SearchViewModel.Cell? {
+        return getTrack(isForwardTrack: true)
+    }
+    
+    
+}

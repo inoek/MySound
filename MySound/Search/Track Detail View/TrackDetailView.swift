@@ -10,6 +10,15 @@ import UIKit
 import SDWebImage
 import AVKit
 
+protocol TrackMovingDelegate: class {
+    //delegate
+    func moveBackForPreviousTrack() -> SearchViewModel.Cell?
+    func moveForwardForPreviousTrack() -> SearchViewModel.Cell?
+}
+
+
+
+
 class TrackDetailView: UIView {
     
     @IBOutlet weak var trackImageView: UIImageView!
@@ -29,6 +38,8 @@ class TrackDetailView: UIView {
         return avPlayer
     }()
     
+    
+    weak var delegate: TrackMovingDelegate?
     
     
     // MARK: - Awake Frome Nib
@@ -61,6 +72,7 @@ class TrackDetailView: UIView {
         artistLabel.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
         monitorStartTime()
+        observeCurrentSongTime()
         
         let resizeOfImage = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: resizeOfImage ?? "") else { return }
@@ -82,6 +94,36 @@ class TrackDetailView: UIView {
         }
         
     }
+    
+    private func observeCurrentSongTime() {
+        
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            
+            self?.currentTimeLabel.text = time.toDisplayString()
+            
+            
+            let durationTime = self?.player.currentItem?.duration//общее время аудиофайла
+            let currentDurationText = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()//отображаем оставшееся время
+            self?.durationTimeLabel.text = "-\(currentDurationText)"
+            
+            
+            self?.updateCurrentTimeSlider()
+            
+        }
+        
+    }
+    
+    
+    
+    private func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())//текущее время
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1)) //дефолтное значени
+        let percent =  currentTimeSeconds / durationSeconds
+        self.currentTimeSlider.value = Float(percent)
+    }
+    
+    
     
     
     // MARK: - Animations
@@ -116,14 +158,28 @@ class TrackDetailView: UIView {
     
     
     @IBAction func handleCurrentTimeSlider(_ sender: UISlider) {
+        
+        let percentage = currentTimeSlider.value//берём значение слайдера
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        
+        let currentTimeInSeconds = Float64(percentage) * durationInSeconds
+        let currentTime = CMTimeMakeWithSeconds(currentTimeInSeconds, preferredTimescale: 1)
+        player.seek(to: currentTime)
     }
     
     
     @IBAction func handleVolumeSlider(_ sender: UISlider) {
+        player.volume = volumeSlider.value
     }
     
     
     @IBAction func previousTrackButtonTapped(_ sender: UIButton) {
+        
+        let cellViewModelDelegate = delegate?.moveBackForPreviousTrack()
+        guard let cellViewModel = cellViewModelDelegate else { return }
+        self.set(viewModel: cellViewModel)
+        
     }
     
     
@@ -143,6 +199,11 @@ class TrackDetailView: UIView {
     
     
     @IBAction func nextTrackButtonTapped(_ sender: UIButton) {
+        
+        let cellViewModelDelegate = delegate?.moveForwardForPreviousTrack()
+        guard let cellViewModel = cellViewModelDelegate else { return }
+        self.set(viewModel: cellViewModel)
+        
     }
     
     
