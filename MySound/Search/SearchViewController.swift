@@ -25,6 +25,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic
     
     @IBOutlet weak var table: UITableView!
     
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     private var timer: Timer?
     private var searchController = UISearchController(searchResultsController: nil)
@@ -112,7 +113,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = table.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell //кастим ячейку к TrackCell
         
         let cellViewModel = searchViewModel.cells[indexPath.row]
-        cell.trackImageView.backgroundColor = .red
+        
         cell.set(viewModel: cellViewModel)
         
         return cell
@@ -123,14 +124,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cellViewModel = searchViewModel.cells[indexPath.row]
         
+        self.tabBarDelegate?.maximizedTrackDetailController(viewModel: cellViewModel)
+//        let trackDetailView: TrackDetailView = TrackDetailView.loadFromNib()
+//        let window = UIApplication.shared.keyWindow//главное окно приложения
+//        trackDetailView.set(viewModel: cellViewModel)
+//        trackDetailView.delegate = self//объявляем делегата (SearchViewController отвечает за реализацию функций)
+//        window?.addSubview(trackDetailView)
         
-        let trackDetailView = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
-        let window = UIApplication.shared.keyWindow//главное окно приложения
-        trackDetailView.set(viewModel: cellViewModel)
         
-        trackDetailView.delegate = self//объявляем делегата (SearchViewController отвечает за реализацию функций)
-        
-        window?.addSubview(trackDetailView)
     }
     
     

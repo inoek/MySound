@@ -32,11 +32,9 @@ class NetworkService {
             
             do {
                 let objects = try decoder.decode(RespondModel.self, from: data)
-                print("objects", objects)
                 completion(objects)
 
             } catch let jsonError {
-                print("Ошибка при декодировании", jsonError)
                 completion(nil)
             }
             

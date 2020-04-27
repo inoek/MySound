@@ -13,6 +13,67 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOS-7I-zhF">
+                    <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                    <subviews>
+                        <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86f-zA-74a">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="C4R-As-QJ4"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="g8F-b1-qbV">
+                            <rect key="frame" x="8" y="8" width="398" height="48"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="5EA-an-ZGV">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="6mR-ot-3yi"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gL-hH-7b0">
+                                    <rect key="frame" x="64" y="0.0" width="206" height="48"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fak-ba-fTC">
+                                    <rect key="frame" x="286" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="paI-XS-bWC"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="pause"/>
+                                    <connections>
+                                        <action selector="playPauseButtonTapped:" destination="1P6-Pk-pO3" eventType="touchUpInside" id="yI3-yy-1Qz"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-1c-RPa">
+                                    <rect key="frame" x="350" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="G5m-lZ-tWc"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="Right"/>
+                                    <connections>
+                                        <action selector="nextTrackButtonTapped:" destination="1P6-Pk-pO3" eventType="touchUpInside" id="BQm-7P-Bmu"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="g8F-b1-qbV" secondAttribute="bottom" constant="8" id="9s7-JV-O24"/>
+                        <constraint firstAttribute="height" constant="64" id="V8e-DG-Pm5"/>
+                        <constraint firstItem="g8F-b1-qbV" firstAttribute="leading" secondItem="sOS-7I-zhF" secondAttribute="leading" constant="8" id="VSy-AL-WLa"/>
+                        <constraint firstItem="86f-zA-74a" firstAttribute="leading" secondItem="sOS-7I-zhF" secondAttribute="leading" id="fME-fh-Hyg"/>
+                        <constraint firstAttribute="trailing" secondItem="g8F-b1-qbV" secondAttribute="trailing" constant="8" id="gJA-Cs-cgE"/>
+                        <constraint firstAttribute="trailing" secondItem="86f-zA-74a" secondAttribute="trailing" id="iMV-NB-CH3"/>
+                        <constraint firstItem="86f-zA-74a" firstAttribute="top" secondItem="sOS-7I-zhF" secondAttribute="top" id="jLz-Tk-FcS"/>
+                        <constraint firstItem="g8F-b1-qbV" firstAttribute="top" secondItem="sOS-7I-zhF" secondAttribute="top" constant="8" id="x0M-jm-66z"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F8t-u8-6YF">
                     <rect key="frame" x="30" y="44" width="354" height="788"/>
                     <subviews>
@@ -23,7 +84,7 @@
                             </constraints>
                             <state key="normal" image="Drag Down"/>
                             <connections>
-                                <action selector="dragDownButtonTapped:" destination="1P6-Pk-pO3" eventType="touchUpInside" id="Jnf-RW-N8S"/>
+                                <action selector="dragDownButtonTapped:" destination="1P6-Pk-pO3" eventType="touchUpInside" id="kIb-RM-yi9"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sPZ-WW-Jxo">
@@ -82,7 +143,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4Y-yU-DXl">
                                     <rect key="frame" x="0.0" y="98.5" width="118" height="20"/>
-                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="Left"/>
                                     <connections>
                                         <action selector="previousTrackButtonTapped:" destination="1P6-Pk-pO3" eventType="touchUpInside" id="Y07-LE-p9V"/>
@@ -98,7 +159,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQ1-m9-bfm">
                                     <rect key="frame" x="236" y="98.5" width="118" height="20"/>
-                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="Right"/>
                                     <connections>
                                         <action selector="nextTrackButtonTapped:" destination="1P6-Pk-pO3" eventType="touchUpInside" id="I6I-Z1-gh5"/>
@@ -137,9 +198,12 @@
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="S2M-EY-1hH" firstAttribute="trailing" secondItem="F8t-u8-6YF" secondAttribute="trailing" constant="30" id="5gn-Rs-akZ"/>
+                <constraint firstItem="sOS-7I-zhF" firstAttribute="top" secondItem="S2M-EY-1hH" secondAttribute="top" id="JqM-3Y-y0h"/>
                 <constraint firstItem="F8t-u8-6YF" firstAttribute="leading" secondItem="S2M-EY-1hH" secondAttribute="leading" constant="30" id="ifG-Xc-iHt"/>
                 <constraint firstItem="F8t-u8-6YF" firstAttribute="top" secondItem="S2M-EY-1hH" secondAttribute="top" id="jmx-eF-zDC"/>
+                <constraint firstItem="sOS-7I-zhF" firstAttribute="leading" secondItem="S2M-EY-1hH" secondAttribute="leading" id="m5E-9t-4eQ"/>
                 <constraint firstItem="S2M-EY-1hH" firstAttribute="bottom" secondItem="F8t-u8-6YF" secondAttribute="bottom" constant="30" id="rmk-bx-HUR"/>
+                <constraint firstItem="S2M-EY-1hH" firstAttribute="trailing" secondItem="sOS-7I-zhF" secondAttribute="trailing" id="tjT-tg-rx6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="S2M-EY-1hH"/>
             <connections>
@@ -147,6 +211,12 @@
                 <outlet property="currentTimeLabel" destination="pxb-EU-a36" id="I7D-0Z-aa0"/>
                 <outlet property="currentTimeSlider" destination="NBo-AH-aTw" id="QEY-AB-lcU"/>
                 <outlet property="durationTimeLabel" destination="9Ok-9d-Yyt" id="GWn-ir-Isf"/>
+                <outlet property="maximizedStackView" destination="F8t-u8-6YF" id="0qg-tg-VFo"/>
+                <outlet property="miniGoForwardButton" destination="EAV-1c-RPa" id="hEb-Jb-hxU"/>
+                <outlet property="miniPlayPauseButton" destination="Fak-ba-fTC" id="Q0l-L1-leJ"/>
+                <outlet property="miniTrackImageView" destination="5EA-an-ZGV" id="0zo-Z1-f8Z"/>
+                <outlet property="miniTrackTitleLabel" destination="6gL-hH-7b0" id="a3Q-yF-A56"/>
+                <outlet property="miniTrackView" destination="sOS-7I-zhF" id="Yvg-jf-csr"/>
                 <outlet property="playPauseButton" destination="Z8h-EC-hOK" id="NkT-us-e8d"/>
                 <outlet property="trackImageView" destination="sPZ-WW-Jxo" id="M1c-go-B0D"/>
                 <outlet property="trackTitleLabel" destination="HZJ-hm-irk" id="uje-sN-sKA"/>
@@ -159,6 +229,7 @@
         <image name="Drag Down" width="37" height="12"/>
         <image name="Icon Min" width="7" height="12"/>
         <image name="IconMax" width="17" height="17"/>
+        <image name="Image" width="163" height="163"/>
         <image name="Left" width="34" height="20"/>
         <image name="Right" width="34" height="20"/>
         <image name="pause" width="57" height="57"/>

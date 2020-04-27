@@ -32,6 +32,18 @@ class TrackDetailView: UIView {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeSlider: UISlider!
     
+    @IBOutlet weak var maximizedStackView: UIStackView!
+    
+    //MARK: -Mini Players Outlets
+    @IBOutlet weak var miniTrackView: UIView!
+    @IBOutlet weak var miniGoForwardButton: UIButton!
+    @IBOutlet weak var miniTrackImageView: UIImageView!
+    @IBOutlet weak var miniTrackTitleLabel: UILabel!
+    @IBOutlet weak var miniPlayPauseButton: UIButton!
+    
+    
+    
+    
     let player: AVPlayer = {
         let avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false//задержка загрузки плеера
@@ -40,6 +52,7 @@ class TrackDetailView: UIView {
     
     
     weak var delegate: TrackMovingDelegate?
+    weak var tabBarDelegate: MainTabBarControllerDelegate? //делегат МТБК
     
     
     // MARK: - Awake Frome Nib
@@ -67,16 +80,26 @@ class TrackDetailView: UIView {
     
     
     func set(viewModel: SearchViewModel.Cell) {
+        //мини плеер
+        miniTrackTitleLabel.text = viewModel.trackName
         
+        
+        
+        //настраиваем trackDetailView
         trackTitleLabel.text = viewModel.trackName
         artistLabel.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
         monitorStartTime()
         observeCurrentSongTime()
         
+        playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        
         let resizeOfImage = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: resizeOfImage ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
+        //после того, как вы вытащили url, добавляем картинку для мини плеера
+        miniTrackImageView.sd_setImage(with: url, completed: nil)
     }
     
     // MARK: - Time Setup
@@ -96,7 +119,7 @@ class TrackDetailView: UIView {
     }
     
     private func observeCurrentSongTime() {
-        
+        //отслеживаем текущее время композиции
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
             
@@ -146,13 +169,16 @@ class TrackDetailView: UIView {
         }, completion: nil)
         
     }
+
     
     // MARK: - IBActions
     
     
     @IBAction func dragDownButtonTapped(_ sender: UIButton) {
         
-        self.removeFromSuperview()
+        //self.removeFromSuperview()
+        //вызываем через делегата функцию уменьшения
+        self.tabBarDelegate?.minimizedTrackDetailController()
         
     }
     
@@ -184,28 +210,33 @@ class TrackDetailView: UIView {
     
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
-        
+        //тут две кнопки плей/пауз
         if player.timeControlStatus == .paused {//воспроизводим
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeTrackImageView()
         } else {//ставим на паузу
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             reduceTrackImageView()
+            
         }
         
     }
     
     
+    
     @IBAction func nextTrackButtonTapped(_ sender: UIButton) {
-        
+        //тут тоже две кнопки
         let cellViewModelDelegate = delegate?.moveForwardForPreviousTrack()
         guard let cellViewModel = cellViewModelDelegate else { return }
         self.set(viewModel: cellViewModel)
+
         
     }
-    
-    
-    
+
 }
+
