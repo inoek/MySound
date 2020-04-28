@@ -12,7 +12,7 @@ import AVKit
 extension CMTime {
     
     func toDisplayString() -> String {
-        //конвертируем непонятный тип в строковые миу=нуты и секунды
+        //конвертируем непонятный тип в строковые минуты и секунды
         guard !CMTimeGetSeconds(self).isNaN else { return "" }
         let totalSeconds = Int(CMTimeGetSeconds(self))//общее количество секунд
         let seconds = totalSeconds % 60
