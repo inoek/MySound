@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 //функции делегата
 protocol MainTabBarControllerDelegate: class {
@@ -34,10 +35,16 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = .gray
         tabBar.tintColor = #colorLiteral(red: 1, green: 0.1719351113, blue: 0.4505646229, alpha: 1)
         
+        let library = Library()//экземпляр файла SwiftUI
+        let hostVC = UIHostingController(rootView: library)
+        hostVC.tabBarItem.image = #imageLiteral(resourceName: "Library")
+        hostVC.tabBarItem.title = "Бибилиотека"
+        
         
         viewControllers = [
-            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "Search - Selected"), title: "Поиск"),
-            generateViewController(rootViewController: ViewController(), image: #imageLiteral(resourceName: "Library"), title: "Поиск")
+            hostVC,
+            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "Search - Selected"), title: "Поиск")
+            //generateViewController(rootViewController: hostVC, image: #imageLiteral(resourceName: "Library"), title: "Поиск")
         ]
     }
     
@@ -139,3 +146,5 @@ extension MainTabBarController: MainTabBarControllerDelegate {
     
     
 }
+
+

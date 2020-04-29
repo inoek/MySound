@@ -142,8 +142,6 @@ class TrackDetailView: UIView {
     @objc private func handleDissmisalPan(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .changed:
-            
-
             //отслеживаем координату у при использовании жестов
             let translation = gesture.translation(in: self.superview)
             //двигаем главный элементы trackView в след за пальцем
@@ -163,6 +161,7 @@ class TrackDetailView: UIView {
             print("unknown default")
         }
     }
+    
     
     private func handlePanChanged(gesture: UIPanGestureRecognizer) {
         

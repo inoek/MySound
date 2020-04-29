@@ -14,8 +14,8 @@
             filePath = "MySound/Search/Track Detail View/TrackDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "handlePanChanged(gesture:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -11,6 +11,7 @@
 		E581C9BE245462C400037578 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581C9BD245462C400037578 /* CMTime + Extension.swift */; };
 		E5827D30244F7B170069831F /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5827D2F244F7B170069831F /* TrackCell.xib */; };
 		E5827D32244F7B550069831F /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827D31244F7B550069831F /* TrackCell.swift */; };
+		E58BD47C24594D6B0006A455 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58BD47B24594D6B0006A455 /* Library.swift */; };
 		E5B4852524507F9D009CDB34 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4852424507F9D009CDB34 /* FooterView.swift */; };
 		E5B599972452E7E5009354DA /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B599962452E7E5009354DA /* TrackDetailView.xib */; };
 		E5B599992452E7F0009354DA /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B599982452E7F0009354DA /* TrackDetailView.swift */; };
@@ -41,6 +42,7 @@
 		E581C9BD245462C400037578 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		E5827D2F244F7B170069831F /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		E5827D31244F7B550069831F /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		E58BD47B24594D6B0006A455 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		E5B4852424507F9D009CDB34 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E5B599962452E7E5009354DA /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		E5B599982452E7F0009354DA /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				E5E2534A244CA88000FC8C8F /* AppDelegate.swift */,
 				E5E2534C244CA88000FC8C8F /* SceneDelegate.swift */,
+				E58BD47B24594D6B0006A455 /* Library.swift */,
 				E5E2536D244CA9FA00FC8C8F /* MainTabBarController.swift */,
 				E5E2535E244CA91200FC8C8F /* Search */,
 				E5E25374244CAA5600FC8C8F /* Helpers */,
@@ -347,6 +350,7 @@
 				E5E2534B244CA88000FC8C8F /* AppDelegate.swift in Sources */,
 				E5E25365244CA92200FC8C8F /* SearchPresenter.swift in Sources */,
 				E5E25376244CAA8500FC8C8F /* NetworkService.swift in Sources */,
+				E58BD47C24594D6B0006A455 /* Library.swift in Sources */,
 				E5B599992452E7F0009354DA /* TrackDetailView.swift in Sources */,
 				E5E2534D244CA88000FC8C8F /* SceneDelegate.swift in Sources */,
 			);
