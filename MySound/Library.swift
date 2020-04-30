@@ -50,9 +50,6 @@ struct Library: View {
                     Text("Second")
                 }
             }
-                
-                
-                
             .navigationBarTitle("Библиотека")
         }
     }

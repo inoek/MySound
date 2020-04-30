@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		95C32B6B7F8C55DA970ED136 /* Pods_MySound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FAC13EF723A3BF041989BF /* Pods_MySound.framework */; };
+		E50090E5245AD244009413A0 /* Track Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50090E4245AD244009413A0 /* Track Model.swift */; };
+		E50090E7245AD58E009413A0 /* Storage Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50090E6245AD58E009413A0 /* Storage Manager.swift */; };
+		E51C06FB245AA45200BAF063 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51C06FA245AA45200BAF063 /* User Defaults.swift */; };
 		E581C9BE245462C400037578 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581C9BD245462C400037578 /* CMTime + Extension.swift */; };
 		E5827D30244F7B170069831F /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5827D2F244F7B170069831F /* TrackCell.xib */; };
 		E5827D32244F7B550069831F /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827D31244F7B550069831F /* TrackCell.swift */; };
@@ -39,6 +42,9 @@
 /* Begin PBXFileReference section */
 		7483CB55A1CF5877958CAD2B /* Pods-MySound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySound.debug.xcconfig"; path = "Target Support Files/Pods-MySound/Pods-MySound.debug.xcconfig"; sourceTree = "<group>"; };
 		CDD696DFCB6D77448D41D8C8 /* Pods-MySound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySound.release.xcconfig"; path = "Target Support Files/Pods-MySound/Pods-MySound.release.xcconfig"; sourceTree = "<group>"; };
+		E50090E4245AD244009413A0 /* Track Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Track Model.swift"; sourceTree = "<group>"; };
+		E50090E6245AD58E009413A0 /* Storage Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage Manager.swift"; sourceTree = "<group>"; };
+		E51C06FA245AA45200BAF063 /* User Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Defaults.swift"; sourceTree = "<group>"; };
 		E581C9BD245462C400037578 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		E5827D2F244F7B170069831F /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		E5827D31244F7B550069831F /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
@@ -95,6 +101,7 @@
 			children = (
 				E5827D2F244F7B170069831F /* TrackCell.xib */,
 				E5827D31244F7B550069831F /* TrackCell.swift */,
+				E51C06FA245AA45200BAF063 /* User Defaults.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -103,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				E5E25377244CAAA000FC8C8F /* SearchRespondModel.swift */,
+				E50090E4245AD244009413A0 /* Track Model.swift */,
+				E50090E6245AD58E009413A0 /* Storage Manager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,15 +350,18 @@
 				E5B4852524507F9D009CDB34 /* FooterView.swift in Sources */,
 				E581C9BE245462C400037578 /* CMTime + Extension.swift in Sources */,
 				E5827D32244F7B550069831F /* TrackCell.swift in Sources */,
+				E50090E7245AD58E009413A0 /* Storage Manager.swift in Sources */,
 				E5DE4EB0245700F3009DF07F /* Nib.swift in Sources */,
 				E5E2536E244CA9FA00FC8C8F /* MainTabBarController.swift in Sources */,
 				E5E25369244CA92200FC8C8F /* SearchViewController.swift in Sources */,
 				E5E2536A244CA92200FC8C8F /* SearchInteractor.swift in Sources */,
 				E5E2534F244CA88000FC8C8F /* ViewController.swift in Sources */,
 				E5E25366244CA92200FC8C8F /* SearchWorker.swift in Sources */,
+				E50090E5245AD244009413A0 /* Track Model.swift in Sources */,
 				E5E2534B244CA88000FC8C8F /* AppDelegate.swift in Sources */,
 				E5E25365244CA92200FC8C8F /* SearchPresenter.swift in Sources */,
 				E5E25376244CAA8500FC8C8F /* NetworkService.swift in Sources */,
+				E51C06FB245AA45200BAF063 /* User Defaults.swift in Sources */,
 				E58BD47C24594D6B0006A455 /* Library.swift in Sources */,
 				E5B599992452E7F0009354DA /* TrackDetailView.swift in Sources */,
 				E5E2534D244CA88000FC8C8F /* SceneDelegate.swift in Sources */,

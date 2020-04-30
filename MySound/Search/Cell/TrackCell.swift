@@ -8,6 +8,10 @@
 
 import UIKit
 import SDWebImage
+import RealmSwift
+
+//var track: Track!
+private var tracks: Results<Track>!
 
 protocol TrackCellViewModel {
     var iconUrlString: String? { get }
@@ -19,6 +23,7 @@ protocol TrackCellViewModel {
 
 class TrackCell: UITableViewCell {
     
+    @IBOutlet weak var addTrack: UIButton!
     @IBOutlet weak var trackImageView: UIImageView!
     
     @IBOutlet weak var trackNameLabel: UILabel!
@@ -33,20 +38,40 @@ class TrackCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        tracks = realm.objects(Track.self)
+
         
         trackImageView.image = nil
     }
     
-    func set(viewModel: TrackCellViewModel) {
+    var cell: SearchViewModel.Cell?
+    
+    func set(viewModel: SearchViewModel.Cell) {
         
+
         
+
+        
+ 
         
         trackNameLabel.text = viewModel.trackName
         artistNameLabel.text = viewModel.artistName
         collectionLabel.text = viewModel.collectionString
         
+
+        
         guard let url = URL(string: viewModel.iconUrlString ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
     }
-   
+    
+
+ 
+    @IBAction func addTrackToLibraryTapped(_ sender: UIButton) {
+        let track = Track(trackName: trackNameLabel.text!, artistName: artistNameLabel.text!, collectionName: collectionLabel.text!, previewUrl: "", saved: true)
+        StorageManager.saveTracks(track)
+        
+        
+    }
+    
+    
 }

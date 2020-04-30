@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZjQ-p9-SHa">
-                        <rect key="frame" x="21" y="12" width="60" height="60"/>
+                        <rect key="frame" x="20" y="12" width="60" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Super EDM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rci-uO-9Zz">
@@ -40,9 +40,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqc-gs-j2i">
+                        <rect key="frame" x="374" y="34" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="Add"/>
+                        <connections>
+                            <action selector="addTrackToLibraryTapped:" destination="4B0-Md-yur" eventType="touchUpInside" id="8rE-lD-oiv"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addTrack" destination="fqc-gs-j2i" id="lsU-ng-dvb"/>
                 <outlet property="artistNameLabel" destination="rci-uO-9Zz" id="JHt-nC-JJl"/>
                 <outlet property="collectionLabel" destination="fzN-ai-hNp" id="u5p-15-0da"/>
                 <outlet property="trackImageView" destination="ZjQ-p9-SHa" id="1gQ-gg-S3Y"/>
@@ -51,4 +60,7 @@
             <point key="canvasLocation" x="0.0" y="45.535714285714285"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Add" width="16" height="16"/>
+    </resources>
 </document>

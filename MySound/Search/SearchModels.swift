@@ -49,22 +49,59 @@ enum Search
 
 }
 //TrackModel
-struct SearchViewModel {
-    struct Cell: TrackCellViewModel {
+class SearchViewModel: NSObject, NSCoding {
+    func encode(with coder: NSCoder) {
+        //преобразует свойства класса к сохранению
+        coder.encode(cells, forKey: "cells")
+    }
+    
+    required init?(coder: NSCoder) {
+        cells = coder.decodeObject(forKey: "cells") as? [SearchViewModel.Cell] ?? []
+    }
+    
+    @objc(_TtCC7MySound15SearchViewModel4Cell)class Cell: NSObject, NSCoding {
+        
+        func encode(with coder: NSCoder) {
+            coder.encode(iconUrlString, forKey: "iconUrlString")
+            coder.encode(trackName, forKey: "trackName")
+            coder.encode(artistName, forKey: "artistName")
+            coder.encode(collectionString, forKey: "collectionString")
+            coder.encode(previewUrl, forKey: "previewUrl")
+        }
+        
+        required init?(coder: NSCoder) {
+            iconUrlString = coder.decodeObject(forKey: "iconUrlString") as? String? ?? ""
+            trackName = coder.decodeObject(forKey: "trackName") as? String ?? ""
+            artistName = coder.decodeObject(forKey: "artistName") as? String ?? ""
+            collectionString = coder.decodeObject(forKey: "collectionString") as? String ?? ""
+            previewUrl = coder.decodeObject(forKey: "previewUrl") as? String? ?? ""
+        }
+        
         var iconUrlString: String?
         
         var trackName: String
         
         var artistName: String
         
-        
         var collectionString: String
-        
-//        var iconUrlString: String?
-//        var trackName: String
-//        var collectionString: String?
-//        var artistName: String
+
         var previewUrl: String?
+        
+        init(iconUrlString: String?,
+             trackName: String,
+             artistName: String,
+             collectionString: String,
+             previewUrl: String?) {
+            self.iconUrlString = iconUrlString
+            self.trackName = trackName
+            self.artistName = artistName
+            self.collectionString = collectionString
+            self.previewUrl = previewUrl
+        }
+    }
+    
+    init(cells: [Cell]) {
+        self.cells = cells
     }
     
     let cells: [Cell]
