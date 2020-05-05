@@ -21,6 +21,7 @@ class TrackCell: UITableViewCell {
     
     @IBOutlet weak var trackImageView: UIImageView!
     
+    @IBOutlet weak var addButtonOutlet: UIButton!
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var collectionLabel: UILabel!
@@ -37,16 +38,42 @@ class TrackCell: UITableViewCell {
         trackImageView.image = nil
     }
     
-    func set(viewModel: TrackCellViewModel) {
+    var cell: SearchViewModel.Cell?
+
+    func set(viewModel: SearchViewModel.Cell) {
+        self.cell = viewModel
         
-        
+        let savedTracks = UserDefaults.standard.savedTracks()
+        let hasFavourite = savedTracks.firstIndex(where: {
+            $0.trackName == self.cell?.trackName && $0.artistName == self.cell?.artistName
+        }) != nil
+        if hasFavourite {
+            addButtonOutlet.isHidden = true
+        } else {
+            addButtonOutlet.isHidden = false
+        }
+
         
         trackNameLabel.text = viewModel.trackName
         artistNameLabel.text = viewModel.artistName
-        collectionLabel.text = viewModel.collectionString
+        collectionLabel.text = viewModel.collectionName
         
         guard let url = URL(string: viewModel.iconUrlString ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
     }
    
+    @IBAction func addTrackButton(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        guard let cell = cell else { return }
+        addButtonOutlet.isHidden = true
+        
+        var listOfTracks = defaults.savedTracks()
+        
+        listOfTracks.append(cell)
+        
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: listOfTracks, requiringSecureCoding: false) {
+            print("Успешно!")
+            defaults.set(savedData, forKey: UserDefaults.favouriteTrackKey)
+        }
+    }
 }

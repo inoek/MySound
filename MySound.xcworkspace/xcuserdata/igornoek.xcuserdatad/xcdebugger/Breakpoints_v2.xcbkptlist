@@ -23,29 +23,121 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E4721495-8011-495C-A6A9-73C189505430"
+            uuid = "C975A82F-BB77-45B2-9797-8DF9D33AD316"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySound/Search/Cell/TrackCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53">
+            startingLineNumber = "80"
+            endingLineNumber = "80">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D9A5B662-FDFC-49B5-92E6-F0B4158D3C2D"
+            uuid = "3D4C069F-33F7-49FA-931B-D8C2EB1339B1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySound/Search/Cell/TrackCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53">
+            startingLineNumber = "80"
+            endingLineNumber = "80">
+            <Locations>
+               <Location
+                  uuid = "3D4C069F-33F7-49FA-931B-D8C2EB1339B1 - 19ab749b866655a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MySound.TrackCell.set(viewModel: MySound.SearchViewModel.Cell) -&gt; ()"
+                  moduleName = "MySound"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igornoek/Documents/swiftProj/MySound/MySound/Search/Cell/TrackCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "1144">
+               </Location>
+               <Location
+                  uuid = "3D4C069F-33F7-49FA-931B-D8C2EB1339B1 - 4e0953bdcedb1841"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MySound.Track) -&gt; Swift.Bool in MySound.TrackCell.set(viewModel: MySound.SearchViewModel.Cell) -&gt; ()"
+                  moduleName = "MySound"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igornoek/Documents/swiftProj/MySound/MySound/Search/Cell/TrackCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "999">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA6C994A-09D8-4D45-96EE-31220ED1F632"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySound/Search/Cell/TrackCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69464E09-CC08-455F-9883-6A269C6A605C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySound/Search/Cell/TrackCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68DC0070-C932-4663-B917-9383FB0E2B29"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySound/Search/Cell/TrackCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "addTrackButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB31384E-C060-4DFD-B04B-13D89CDBE473"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySound/Search/Cell/TrackCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "addTrackButton(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

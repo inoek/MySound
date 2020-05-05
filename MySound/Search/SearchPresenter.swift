@@ -48,8 +48,10 @@ class SearchPresenter: SearchPresentationLogic
     }
     private func cellViewModel(from track: TrackModel) -> SearchViewModel.Cell {
         
-        return SearchViewModel.Cell.init(iconUrlString: track.artworkUrl100, trackName: track.trackName,
-                                         artistName: track.artistName, collectionString: track.collectionName!,
+        return SearchViewModel.Cell.init(iconUrlString: track.artworkUrl100,
+                                         trackName: track.trackName,
+                                         collectionName: track.collectionName ?? "",
+                                         artistName: track.artistName,
                                          previewUrl: track.previewUrl)
     }
     
