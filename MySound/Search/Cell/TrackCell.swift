@@ -11,7 +11,7 @@ import SDWebImage
 import RealmSwift
 
 //var track: Track!
-private var tracks: Results<Track>!
+
 
 protocol TrackCellViewModel {
     var iconUrlString: String? { get }
@@ -22,8 +22,9 @@ protocol TrackCellViewModel {
 
 
 class TrackCell: UITableViewCell {
-    
-    @IBOutlet weak var addTrack: UIButton!
+    private var tracks: Results<Track>!
+
+    @IBOutlet weak var addTrackOutlet: UIButton!
     @IBOutlet weak var trackImageView: UIImageView!
     
     @IBOutlet weak var trackNameLabel: UILabel!
@@ -48,8 +49,23 @@ class TrackCell: UITableViewCell {
     
     func set(viewModel: SearchViewModel.Cell) {
         
+        cell = viewModel
+        tracks = realm.objects(Track.self)
+        
+        let savedTracks = tracks
+        
 
         
+
+
+        let hasFavourite = savedTracks?.firstIndex(where: {
+            $0.trackName == self.cell?.trackName && $0.artistName == self.cell?.artistName
+        }) != nil
+        if hasFavourite {
+            addTrackOutlet.isHidden = true
+        } else {
+            addTrackOutlet.isHidden = false
+        }
 
         
  
@@ -64,11 +80,24 @@ class TrackCell: UITableViewCell {
         trackImageView.sd_setImage(with: url, completed: nil)
     }
     
-
+    
  
     @IBAction func addTrackToLibraryTapped(_ sender: UIButton) {
-        let track = Track(trackName: trackNameLabel.text!, artistName: artistNameLabel.text!, collectionName: collectionLabel.text!, previewUrl: "", saved: true)
-        StorageManager.saveTracks(track)
+        let savedTracks = tracks
+
+        
+        let hasFavourite = savedTracks?.firstIndex(where: {
+            $0.trackName == self.cell?.trackName && $0.artistName == self.cell?.artistName
+        }) != nil
+        if hasFavourite != true {
+            addTrackOutlet.isHidden = true
+         let track = Track(trackName: cell!.trackName, artistName: cell!.artistName, collectionName: cell!.collectionString, previewUrl: cell?.previewUrl)
+            StorageManager.saveTracks(track)
+        } else {
+            print("Item already exist")
+        }
+        
+
         
         
     }
