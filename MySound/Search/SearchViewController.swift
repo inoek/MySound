@@ -66,6 +66,22 @@ class SearchViewController: UIViewController, SearchDisplayLogic
         //searchBar(searchController.searchBar, textDidChange: "travis scott")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let keyWindow = UIApplication.shared.connectedScenes.filter( {
+            $0.activationState == .foregroundActive
+        }).map({ $0 as? UIWindowScene }).compactMap({
+            $0
+            }).first?.windows.filter({ $0.isKeyWindow }).first
+        //получаем keyWindow
+        
+        let tabbarVC = keyWindow?.rootViewController as? MainTabBarController
+        tabbarVC?.trackDetailView.delegate = self
+        //при нажатии на кнопку с окна библиотеки меняется делегат
+    }
+    
+    
     private func setupSearchBar() {
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
