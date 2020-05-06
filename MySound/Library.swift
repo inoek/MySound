@@ -11,15 +11,20 @@ import URLImage
 
 struct Library: View {
     
-    var tracks = UserDefaults.standard.savedTracks()
+    @State var tracks = UserDefaults.standard.savedTracks()
+    @State private var showAlert = false
+    @State private var track: SearchViewModel.Cell!
+    
+    var tabBarDelegate: MainTabBarControllerDelegate?//делегат таб бак контроллера
     
     var body: some View {
         NavigationView {
             VStack {
-                GeometryReader { geometry in
+                GeometryReader { geometry in //геометрия кнопок
                     HStack(spacing: 20) {
                         Button(action: {
-                            print("12345")
+                            self.track = self.tracks[0]//выбираем первый трек из массива
+                            self.tabBarDelegate?.maximizedTrackDetailController(viewModel: self.track)
                         }, label: {
                             Image(systemName: "play.fill")
                                 .frame(width: geometry.size.width / 2 - 10, height: 50)
@@ -28,7 +33,7 @@ struct Library: View {
                                 .cornerRadius(10)
                         })
                         Button(action: {
-                            print("54321")
+                            self.tracks = UserDefaults.standard.savedTracks()
                         }, label: {
                             Image(systemName: "arrow.2.circlepath")
                                 .frame(width: geometry.size.width / 2 - 10, height: 50)
@@ -40,40 +45,82 @@ struct Library: View {
                 }.padding().frame(height: 50)
                 Divider().padding(.leading).padding(.trailing)
                 
-                List(tracks) { track in
-                    LibraryCell(cell: track)
-                }
+                List {
+                    ForEach(tracks) { track in
+                        LibraryCell(cell: track)
+                            .gesture(LongPressGesture()
+                                .onEnded({ (_) in
+                                    print("Long press")
+                                    self.track = track//передаём ячейку в глобальную переменную
+                                    self.showAlert = true//вызываем алёрт
+                                    
+                                })
+                                .simultaneously(with: TapGesture()
+                                    .onEnded({ (_) in
+                                        self.track = track//передаём ячейку в глобальную переменную
+                                        self.tabBarDelegate?.maximizedTrackDetailController(viewModel: self.track)
+                                    })))
+                        
+                    }.onDelete(perform: delete)
+                }.actionSheet(isPresented: $showAlert, content: {
+                    ActionSheet(title: Text("Уверены, что хотите удалить этот трек?"), buttons: [.destructive(Text("Удалить"), action:  {
+                        print("Deleted \(self.track.trackName)")
+                        self.delete(track: self.track)
+                    }), .cancel()
+                    ])
+                })
+                    
+                    .navigationBarTitle("Library")
+            }
             
-                .navigationBarTitle("Library")
         }
         
     }
-}
-
-struct LibraryCell: View {
     
-    var cell: SearchViewModel.Cell
-    
-    var body: some View {
-        HStack {
-            URLImage(URL(string: cell.iconUrlString ?? "")!) { proxy in
-            proxy.image
-                .resizable()                     // Make image resizable
-                .clipped()                       // Clip overlaping parts
-            }
-            .frame(width: 60, height: 60)  // Set frame to 100x100.
-            VStack(alignment: .leading) {
-                Text("\(cell.trackName)")
-                Text("\(cell.artistName)")
-            }
+    func delete(at offsets: IndexSet) {
+        tracks.remove(atOffsets: offsets)
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: tracks, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: UserDefaults.favouriteTrackKey )
         }
+    }
+    
+    func delete(track: SearchViewModel.Cell) {
+        let index = tracks.firstIndex(of: track)
+        guard let myIndex = index else { return }
+        tracks.remove(at: myIndex)
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: tracks, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: UserDefaults.favouriteTrackKey )
+        }
+    }
+    
+    struct LibraryCell: View {
         
+        var cell: SearchViewModel.Cell
+        
+        var body: some View {
+            HStack {
+                URLImage(URL(string: cell.iconUrlString ?? "")!) { proxy in
+                    proxy.image
+                        .resizable()                     // Make image resizable
+                        .clipped()                       // Clip overlaping parts
+                }
+                    .frame(width: 60, height: 60)  // Set frame to 100x100.
+                VStack(alignment: .leading) {
+                    Text("\(cell.trackName)")
+                    Text("\(cell.artistName)")
+                }
+            }
+            
+        }
     }
-}
-
-struct Library_Previews: PreviewProvider {
-    static var previews: some View {
-        Library()
+    
+    
+    
+    struct Library_Previews: PreviewProvider {
+        static var previews: some View {
+            Library()
+        }
     }
-}
 }

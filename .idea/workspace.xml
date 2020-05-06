@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42484a3e-6f2c-41d3-8bc2-dc096089bd30" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/MySound.xcodeproj/xcuserdata/igornoek.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MySound.xcodeproj/xcuserdata/igornoek.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MySound.xcworkspace/xcuserdata/igornoek.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/MySound.xcworkspace/xcuserdata/igornoek.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/igornoek.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/igornoek.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_034DF01C-FF9F-487D-9294-8FB4421A29E5" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bTnkbFTf2eaWE6YkATDPAx8p09" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="manualOrder" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="MySound" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MySound" TARGET_NAME="MySound" CONFIG_NAME="Debug" SCHEME_NAME="MySound" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" RUN_TARGET_PROJECT_NAME="MySound" RUN_TARGET_NAME="MySound" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <embedded_app_extension_list />
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42484a3e-6f2c-41d3-8bc2-dc096089bd30" name="Default Changelist" comment="" />
+      <created>1588665094891</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588665094891</updated>
+      <workItem from="1588665107957" duration="163000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1181" height="184" key="GridCell.Tab.0.bottom" timestamp="1588665276444">
+      <screen x="37" y="23" width="1243" height="777" />
+    </state>
+    <state width="1181" height="184" key="GridCell.Tab.0.bottom/37.23.1243.777@37.23.1243.777" timestamp="1588665276444" />
+    <state width="1181" height="184" key="GridCell.Tab.0.center" timestamp="1588665276441">
+      <screen x="37" y="23" width="1243" height="777" />
+    </state>
+    <state width="1181" height="184" key="GridCell.Tab.0.center/37.23.1243.777@37.23.1243.777" timestamp="1588665276441" />
+    <state width="1181" height="184" key="GridCell.Tab.0.left" timestamp="1588665276441">
+      <screen x="37" y="23" width="1243" height="777" />
+    </state>
+    <state width="1181" height="184" key="GridCell.Tab.0.left/37.23.1243.777@37.23.1243.777" timestamp="1588665276441" />
+    <state width="1181" height="184" key="GridCell.Tab.0.right" timestamp="1588665276442">
+      <screen x="37" y="23" width="1243" height="777" />
+    </state>
+    <state width="1181" height="184" key="GridCell.Tab.0.right/37.23.1243.777@37.23.1243.777" timestamp="1588665276442" />
+  </component>
+</project>
