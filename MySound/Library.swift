@@ -1,9 +1,9 @@
 //
 //  Library.swift
-//  IMusic
+//  MySound
 //
-//  Created by Алексей Пархоменко on 08/09/2019.
-//  Copyright © 2019 Алексей Пархоменко. All rights reserved.
+//  Created by Игорь Ноек on 29.04.2020.
+//  Copyright © 2020 Игорь Ноек. All rights reserved.
 //
 
 import SwiftUI
@@ -20,6 +20,7 @@ struct Library: View {
     var body: some View {
         NavigationView {
             VStack {
+                //устанавливаем геометрию кнопок
                 GeometryReader { geometry in //геометрия кнопок
                     HStack(spacing: 20) {
                         Button(action: {
@@ -42,8 +43,8 @@ struct Library: View {
                                 .cornerRadius(10)
                         })
                     }
-                }.padding().frame(height: 50)
-                Divider().padding(.leading).padding(.trailing)
+                }.padding().frame(height: 50)//отступы от краёв, высота 50 поинтов
+                Divider().padding(.leading).padding(.trailing)//сепаратор с отступами слева и справа
                 
                 List {
                     ForEach(tracks) { track in
@@ -62,7 +63,7 @@ struct Library: View {
                                             $0.activationState == .foregroundActive
                                         }).map({ $0 as? UIWindowScene }).compactMap({
                                             $0
-                                            }).first?.windows.filter({ $0.isKeyWindow }).first
+                                        }).first?.windows.filter({ $0.isKeyWindow }).first
                                         //получаем keyWindow
                                         
                                         let tabbarVC = keyWindow?.rootViewController as? MainTabBarController
@@ -82,7 +83,7 @@ struct Library: View {
                     ])
                 })
                     
-                    .navigationBarTitle("Library")
+                    .navigationBarTitle("Библиотека")
             }
             
         }

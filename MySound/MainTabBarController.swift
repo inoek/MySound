@@ -43,9 +43,8 @@ class MainTabBarController: UITabBarController {
         
         
         viewControllers = [
-            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "Search - Selected"), title: "Поиск"),
-            hostVC
-            
+            hostVC,
+            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "Search - Selected"), title: "Поиск")
             //generateViewController(rootViewController: hostVC, image: #imageLiteral(resourceName: "Library"), title: "Поиск")
         ]
     }

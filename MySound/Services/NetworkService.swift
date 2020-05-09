@@ -15,7 +15,7 @@ class NetworkService {
         
         let url = "https://itunes.apple.com/search"
         let parametrs = ["term":"\(searchText)",
-            "limit":"\(10)",
+            "limit":"\(40)",
             "media": "music"]//фильтруем выборку по музыкальному контенту
         AF.request(url, method: .get, parameters: parametrs, encoding: URLEncoding.default, headers: nil).responseData { (dataResponse) in
             
